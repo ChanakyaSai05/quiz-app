@@ -48,7 +48,7 @@ function App() {
         </div>
       ) : (
         <div>
-          <QuestionsPage questions={questions} />
+          <QuestionsPage questions={questions} setStart={setStart} />
         </div>
       )}
     </>
