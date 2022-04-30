@@ -1,42 +1,39 @@
-import React, { useEffect, useState } from "react";
-import axios from "axios";
-const API_ENDPOINT = "https://opentdb.com/api.php?";
-function HomePage() {
-  const [questions, setQuestions] = useState([]);
-  const [amount, setAmount] = useState(0);
-  const [difficulty, setDifficulty] = useState("easy");
-  const [category, setCategory] = useState("sports");
-  const table = {
-    sports: 21,
-    history: 23,
-    politics: 24,
-  };
-  const fetchData = async () => {
-    const data = await axios.get(
-      `${API_ENDPOINT}amount=${amount}&difficulty=${difficulty}&category=${table[category]}&type=multiple`
-    );
-    console.log(data);
-    setQuestions(data);
-  };
-  useEffect(() => {
-    fetchData();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-  console.log(questions);
-  const startButton = () => {
-    fetchData();
-  };
+import React from "react";
+// const API_ENDPOINT = "https://opentdb.com/api.php?";
+function HomePage({
+  // setQuestions,
+  setAmount,
+  setDifficulty,
+  setCategory,
+  //   setStart,
+  amount,
+  difficulty,
+  //   table,
+  category,
+  startButton,
+}) {
+  //   const fetchData = async () => {
+  //     const { data } = await axios.get(
+  //       `${API_ENDPOINT}amount=${amount}&difficulty=${difficulty}&category=${table[category]}&type=multiple`
+  //     );
+  //     console.log(data);
+  //     setQuestions(data);
+  //   };
+  //   const startButton = () => {
+  //     setStart(true);
+  //     fetchData();
+  //   };
   return (
     <div>
       <h2>Setup Quiz</h2>
-      <label for="questions">Number of Questions</label>
+      <label htmlFor="questions">Number of Questions</label>
       <input
         type="text"
         id="questions"
         value={amount}
         onChange={(e) => setAmount(e.target.value)}
       />
-      <label for="category">Category</label>
+      <label htmlFor="category">Category</label>
       <select
         id="category"
         value={category}
@@ -46,7 +43,7 @@ function HomePage() {
         <option value="history">history</option>
         <option value="politics">politics</option>
       </select>
-      <label for="difficulty">Select Difficulty</label>
+      <label htmlFor="difficulty">Select Difficulty</label>
       <select
         id="difficulty"
         value={difficulty}
