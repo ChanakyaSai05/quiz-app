@@ -1,6 +1,6 @@
 import React, { useRef, useState } from "react";
 
-function QuestionsPage({ questions }) {
+function QuestionsPage({ questions, setStart }) {
   console.log(questions);
   const [index, setIndex] = useState(0);
   const [correct, setCorrect] = useState(0);
@@ -8,6 +8,7 @@ function QuestionsPage({ questions }) {
   const nextquestion = () => {
     if (index === 9) {
       alert(`You have got ${correct} marks`);
+      setStart(false);
       return;
     }
     const index1 = index + 1;
