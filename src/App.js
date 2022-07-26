@@ -1,10 +1,11 @@
 import { useState } from "react";
 import axios from "axios";
 import "./App.css";
-import HomePage from "./components/HomePage";
-import QuestionsPage from "./components/QuestionsPage";
-// const tempUrl =
-// "https://opentdb.com/api.php?amount=10&category=21&difficulty=easy&type=multiple";
+import HomePage from "./Pages/HomePage";
+import QuestionsPage from "./Pages/QuestionsPage";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap/dist/js/bootstrap.bundle.min";
+
 const API_ENDPOINT = "https://opentdb.com/api.php?";
 function App() {
   const [questions, setQuestions] = useState();
@@ -17,7 +18,7 @@ function App() {
     history: 23,
     politics: 24,
   };
-  console.log(questions);
+  // console.log(questions);
   const fetchData = async () => {
     const { data } = await axios.get(
       `${API_ENDPOINT}amount=${amount}&difficulty=${difficulty}&category=${table[category]}&type=multiple`
@@ -29,8 +30,8 @@ function App() {
     setStart(true);
     fetchData();
   };
-  console.log(start);
-  console.log(questions);
+  // console.log(start);
+  // console.log(questions);
 
   return (
     <>
